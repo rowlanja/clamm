@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			".deps/src/UniswapV3Pool.sol": "UniswapV3Pool"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		".deps/src/UniswapV3Pool.sol": {
+			"keccak256": "0x2dc9417a80aa370d6ecf2d0a4a3d274a1cde73e0ec3b4c8b0b6b9b894b4fa9c8",
+			"license": "GPL-3.0-or-later",
+			"urls": [
+				"bzz-raw://73565ca850d6af7ad668de6977b600375bfc4fc340b14c7e9b3708d263469b7b",
+				"dweb:/ipfs/QmQDdwwdqmxnXVKhwsW9qLCZ2ZJBZCQf6axLYCXiDqaTBn"
+			]
+		}
+	},
+	"version": 1
+}

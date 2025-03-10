@@ -1,0 +1,1205 @@
+{
+	"id": "85691518c92709f12e0ea1c4b829fde5",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.26",
+	"solcLongVersion": "0.8.26+commit.8a97fa7a",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			".deps/src/libs/Position.sol": {
+				"content": "library Position {\r\n    struct Info {\r\n        uint128 liquidity;\r\n    }\r\n\r\n    function update(Info storage self, uint128 liquidityDelta) internal {\r\n        uint128 liquidityBefore = self.liquidity;\r\n        uint128 liquidityAfter = liquidityBefore + liquidityDelta;\r\n\r\n        self.liquidity = liquidityAfter;\r\n    }\r\n\r\n    function get(\r\n        mapping(bytes32 => Info) storage self,\r\n        address owner,\r\n        int24 lowerTick,\r\n        int24 upperTick\r\n    ) internal view returns (Position.Info storage position) {\r\n        position = self[\r\n            keccak256(abi.encodePacked(owner, lowerTick, upperTick))\r\n        ];\r\n    }\r\n}"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			},
+			"remappings": []
+		}
+	},
+	"output": {
+		"contracts": {
+			".deps/src/libs/Position.sol": {
+				"Position": {
+					"abi": [],
+					"devdoc": {
+						"kind": "dev",
+						"methods": {},
+						"version": 1
+					},
+					"evm": {
+						"assembly": "    /* \".deps/src/libs/Position.sol\":0:645  library Position {... */\n  dataSize(sub_0)\n  dataOffset(sub_0)\n  0x0b\n  dup3\n  dup3\n  dup3\n  codecopy\n  dup1\n  mload\n  0x00\n  byte\n  0x73\n  eq\n  tag_1\n  jumpi\n  mstore(0x00, 0x4e487b7100000000000000000000000000000000000000000000000000000000)\n  mstore(0x04, 0x00)\n  revert(0x00, 0x24)\ntag_1:\n  mstore(0x00, address)\n  0x73\n  dup2\n  mstore8\n  dup3\n  dup2\n  return\nstop\n\nsub_0: assembly {\n        /* \".deps/src/libs/Position.sol\":0:645  library Position {... */\n      eq(address, deployTimeAddress())\n      mstore(0x40, 0x80)\n      0x00\n      dup1\n      revert\n\n    auxdata: 0xa264697066735822122011630185ae2a938184d43108376859992b64b1451389446d4ee3ddaad956eb6c64736f6c634300081a0033\n}\n",
+						"bytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"linkReferences": {},
+							"object": "6055604b600b8282823980515f1a607314603f577f4e487b71000000000000000000000000000000000000000000000000000000005f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f80fdfea264697066735822122011630185ae2a938184d43108376859992b64b1451389446d4ee3ddaad956eb6c64736f6c634300081a0033",
+							"opcodes": "PUSH1 0x55 PUSH1 0x4B PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH0 BYTE PUSH1 0x73 EQ PUSH1 0x3F JUMPI PUSH32 0x4E487B7100000000000000000000000000000000000000000000000000000000 PUSH0 MSTORE PUSH0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST ADDRESS PUSH0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 GT PUSH4 0x185AE2A SWAP4 DUP2 DUP5 0xD4 BALANCE ADDMOD CALLDATACOPY PUSH9 0x59992B64B145138944 PUSH14 0x4EE3DDAAD956EB6C64736F6C6343 STOP ADDMOD BYTE STOP CALLER ",
+							"sourceMap": "0:645:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+						},
+						"deployedBytecode": {
+							"functionDebugData": {},
+							"generatedSources": [],
+							"immutableReferences": {},
+							"linkReferences": {},
+							"object": "730000000000000000000000000000000000000000301460806040525f80fdfea264697066735822122011630185ae2a938184d43108376859992b64b1451389446d4ee3ddaad956eb6c64736f6c634300081a0033",
+							"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 GT PUSH4 0x185AE2A SWAP4 DUP2 DUP5 0xD4 BALANCE ADDMOD CALLDATACOPY PUSH9 0x59992B64B145138944 PUSH14 0x4EE3DDAAD956EB6C64736F6C6343 STOP ADDMOD BYTE STOP CALLER ",
+							"sourceMap": "0:645:0:-:0;;;;;;;;"
+						},
+						"gasEstimates": {
+							"creation": {
+								"codeDepositCost": "17000",
+								"executionCost": "92",
+								"totalCost": "17092"
+							},
+							"internal": {
+								"get(mapping(bytes32 => struct Position.Info storage ref),address,int24,int24)": "infinite",
+								"update(struct Position.Info storage pointer,uint128)": "infinite"
+							}
+						},
+						"legacyAssembly": {
+							".code": [
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH #[$]",
+									"source": 0,
+									"value": "0000000000000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH [$]",
+									"source": 0,
+									"value": "0000000000000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "B"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "CODECOPY",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "DUP1",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "MLOAD",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "BYTE",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "73"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "EQ",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH [tag]",
+									"source": 0,
+									"value": "1"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "JUMPI",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "4E487B7100000000000000000000000000000000000000000000000000000000"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "4"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "24"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "REVERT",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "tag",
+									"source": 0,
+									"value": "1"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "JUMPDEST",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "ADDRESS",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "0"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "MSTORE",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "PUSH",
+									"source": 0,
+									"value": "73"
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "DUP2",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "MSTORE8",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "DUP3",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "DUP2",
+									"source": 0
+								},
+								{
+									"begin": 0,
+									"end": 645,
+									"name": "RETURN",
+									"source": 0
+								}
+							],
+							".data": {
+								"0": {
+									".auxdata": "a264697066735822122011630185ae2a938184d43108376859992b64b1451389446d4ee3ddaad956eb6c64736f6c634300081a0033",
+									".code": [
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "PUSHDEPLOYADDRESS",
+											"source": 0
+										},
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "ADDRESS",
+											"source": 0
+										},
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "EQ",
+											"source": 0
+										},
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "PUSH",
+											"source": 0,
+											"value": "80"
+										},
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "PUSH",
+											"source": 0,
+											"value": "40"
+										},
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "MSTORE",
+											"source": 0
+										},
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "PUSH",
+											"source": 0,
+											"value": "0"
+										},
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "DUP1",
+											"source": 0
+										},
+										{
+											"begin": 0,
+											"end": 645,
+											"name": "REVERT",
+											"source": 0
+										}
+									]
+								}
+							},
+							"sourceList": [
+								".deps/src/libs/Position.sol",
+								"#utility.yul"
+							]
+						},
+						"methodIdentifiers": {}
+					},
+					"metadata": "{\"compiler\":{\"version\":\"0.8.26+commit.8a97fa7a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\".deps/src/libs/Position.sol\":\"Position\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\".deps/src/libs/Position.sol\":{\"keccak256\":\"0x7163ee7e42487e0e20cac8c3bc2e15e8c5acf04918cf768876c16ad3cb5db189\",\"urls\":[\"bzz-raw://08fdafe37adf7c161319328b28c8a0c7dc502d1a28d75662b91e1e6e31ad837a\",\"dweb:/ipfs/QmQTeeasoPSZgSk9rPDdPMgC5ye5q2JUdm4nMnCYbR9SEj\"]}},\"version\":1}",
+					"storageLayout": {
+						"storage": [],
+						"types": null
+					},
+					"userdoc": {
+						"kind": "user",
+						"methods": {},
+						"version": 1
+					}
+				}
+			}
+		},
+		"errors": [
+			{
+				"component": "general",
+				"errorCode": "1878",
+				"formattedMessage": "Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.\n--> .deps/src/libs/Position.sol\n\n",
+				"message": "SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing \"SPDX-License-Identifier: <SPDX-License>\" to each source file. Use \"SPDX-License-Identifier: UNLICENSED\" for non-open-source code. Please see https://spdx.org for more information.",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": -1,
+					"file": ".deps/src/libs/Position.sol",
+					"start": -1
+				},
+				"type": "Warning"
+			},
+			{
+				"component": "general",
+				"errorCode": "3420",
+				"formattedMessage": "Warning: Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.26;\"\n--> .deps/src/libs/Position.sol\n\n",
+				"message": "Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.26;\"",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": -1,
+					"file": ".deps/src/libs/Position.sol",
+					"start": -1
+				},
+				"type": "Warning"
+			}
+		],
+		"sources": {
+			".deps/src/libs/Position.sol": {
+				"ast": {
+					"absolutePath": ".deps/src/libs/Position.sol",
+					"exportedSymbols": {
+						"Position": [
+							61
+						]
+					},
+					"id": 62,
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"abstract": false,
+							"baseContracts": [],
+							"canonicalName": "Position",
+							"contractDependencies": [],
+							"contractKind": "library",
+							"fullyImplemented": true,
+							"id": 61,
+							"linearizedBaseContracts": [
+								61
+							],
+							"name": "Position",
+							"nameLocation": "8:8:0",
+							"nodeType": "ContractDefinition",
+							"nodes": [
+								{
+									"canonicalName": "Position.Info",
+									"id": 3,
+									"members": [
+										{
+											"constant": false,
+											"id": 2,
+											"mutability": "mutable",
+											"name": "liquidity",
+											"nameLocation": "55:9:0",
+											"nodeType": "VariableDeclaration",
+											"scope": 3,
+											"src": "47:17:0",
+											"stateVariable": false,
+											"storageLocation": "default",
+											"typeDescriptions": {
+												"typeIdentifier": "t_uint128",
+												"typeString": "uint128"
+											},
+											"typeName": {
+												"id": 1,
+												"name": "uint128",
+												"nodeType": "ElementaryTypeName",
+												"src": "47:7:0",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												}
+											},
+											"visibility": "internal"
+										}
+									],
+									"name": "Info",
+									"nameLocation": "31:4:0",
+									"nodeType": "StructDefinition",
+									"scope": 61,
+									"src": "24:48:0",
+									"visibility": "public"
+								},
+								{
+									"body": {
+										"id": 28,
+										"nodeType": "Block",
+										"src": "148:171:0",
+										"statements": [
+											{
+												"assignments": [
+													12
+												],
+												"declarations": [
+													{
+														"constant": false,
+														"id": 12,
+														"mutability": "mutable",
+														"name": "liquidityBefore",
+														"nameLocation": "167:15:0",
+														"nodeType": "VariableDeclaration",
+														"scope": 28,
+														"src": "159:23:0",
+														"stateVariable": false,
+														"storageLocation": "default",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint128",
+															"typeString": "uint128"
+														},
+														"typeName": {
+															"id": 11,
+															"name": "uint128",
+															"nodeType": "ElementaryTypeName",
+															"src": "159:7:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_uint128",
+																"typeString": "uint128"
+															}
+														},
+														"visibility": "internal"
+													}
+												],
+												"id": 15,
+												"initialValue": {
+													"expression": {
+														"id": 13,
+														"name": "self",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 6,
+														"src": "185:4:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+															"typeString": "struct Position.Info storage pointer"
+														}
+													},
+													"id": 14,
+													"isConstant": false,
+													"isLValue": true,
+													"isPure": false,
+													"lValueRequested": false,
+													"memberLocation": "190:9:0",
+													"memberName": "liquidity",
+													"nodeType": "MemberAccess",
+													"referencedDeclaration": 2,
+													"src": "185:14:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint128",
+														"typeString": "uint128"
+													}
+												},
+												"nodeType": "VariableDeclarationStatement",
+												"src": "159:40:0"
+											},
+											{
+												"assignments": [
+													17
+												],
+												"declarations": [
+													{
+														"constant": false,
+														"id": 17,
+														"mutability": "mutable",
+														"name": "liquidityAfter",
+														"nameLocation": "218:14:0",
+														"nodeType": "VariableDeclaration",
+														"scope": 28,
+														"src": "210:22:0",
+														"stateVariable": false,
+														"storageLocation": "default",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint128",
+															"typeString": "uint128"
+														},
+														"typeName": {
+															"id": 16,
+															"name": "uint128",
+															"nodeType": "ElementaryTypeName",
+															"src": "210:7:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_uint128",
+																"typeString": "uint128"
+															}
+														},
+														"visibility": "internal"
+													}
+												],
+												"id": 21,
+												"initialValue": {
+													"commonType": {
+														"typeIdentifier": "t_uint128",
+														"typeString": "uint128"
+													},
+													"id": 20,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"leftExpression": {
+														"id": 18,
+														"name": "liquidityBefore",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 12,
+														"src": "235:15:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint128",
+															"typeString": "uint128"
+														}
+													},
+													"nodeType": "BinaryOperation",
+													"operator": "+",
+													"rightExpression": {
+														"id": 19,
+														"name": "liquidityDelta",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 8,
+														"src": "253:14:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint128",
+															"typeString": "uint128"
+														}
+													},
+													"src": "235:32:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint128",
+														"typeString": "uint128"
+													}
+												},
+												"nodeType": "VariableDeclarationStatement",
+												"src": "210:57:0"
+											},
+											{
+												"expression": {
+													"id": 26,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"leftHandSide": {
+														"expression": {
+															"id": 22,
+															"name": "self",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 6,
+															"src": "280:4:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+																"typeString": "struct Position.Info storage pointer"
+															}
+														},
+														"id": 24,
+														"isConstant": false,
+														"isLValue": true,
+														"isPure": false,
+														"lValueRequested": true,
+														"memberLocation": "285:9:0",
+														"memberName": "liquidity",
+														"nodeType": "MemberAccess",
+														"referencedDeclaration": 2,
+														"src": "280:14:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint128",
+															"typeString": "uint128"
+														}
+													},
+													"nodeType": "Assignment",
+													"operator": "=",
+													"rightHandSide": {
+														"id": 25,
+														"name": "liquidityAfter",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 17,
+														"src": "297:14:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_uint128",
+															"typeString": "uint128"
+														}
+													},
+													"src": "280:31:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint128",
+														"typeString": "uint128"
+													}
+												},
+												"id": 27,
+												"nodeType": "ExpressionStatement",
+												"src": "280:31:0"
+											}
+										]
+									},
+									"id": 29,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "update",
+									"nameLocation": "89:6:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 9,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 6,
+												"mutability": "mutable",
+												"name": "self",
+												"nameLocation": "109:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 29,
+												"src": "96:17:0",
+												"stateVariable": false,
+												"storageLocation": "storage",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+													"typeString": "struct Position.Info"
+												},
+												"typeName": {
+													"id": 5,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 4,
+														"name": "Info",
+														"nameLocations": [
+															"96:4:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 3,
+														"src": "96:4:0"
+													},
+													"referencedDeclaration": 3,
+													"src": "96:4:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+														"typeString": "struct Position.Info"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 8,
+												"mutability": "mutable",
+												"name": "liquidityDelta",
+												"nameLocation": "123:14:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 29,
+												"src": "115:22:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_uint128",
+													"typeString": "uint128"
+												},
+												"typeName": {
+													"id": 7,
+													"name": "uint128",
+													"nodeType": "ElementaryTypeName",
+													"src": "115:7:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_uint128",
+														"typeString": "uint128"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "95:43:0"
+									},
+									"returnParameters": {
+										"id": 10,
+										"nodeType": "ParameterList",
+										"parameters": [],
+										"src": "148:0:0"
+									},
+									"scope": 61,
+									"src": "80:239:0",
+									"stateMutability": "nonpayable",
+									"virtual": false,
+									"visibility": "internal"
+								},
+								{
+									"body": {
+										"id": 59,
+										"nodeType": "Block",
+										"src": "526:116:0",
+										"statements": [
+											{
+												"expression": {
+													"id": 57,
+													"isConstant": false,
+													"isLValue": false,
+													"isPure": false,
+													"lValueRequested": false,
+													"leftHandSide": {
+														"id": 46,
+														"name": "position",
+														"nodeType": "Identifier",
+														"overloadedDeclarations": [],
+														"referencedDeclaration": 44,
+														"src": "537:8:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+															"typeString": "struct Position.Info storage pointer"
+														}
+													},
+													"nodeType": "Assignment",
+													"operator": "=",
+													"rightHandSide": {
+														"baseExpression": {
+															"id": 47,
+															"name": "self",
+															"nodeType": "Identifier",
+															"overloadedDeclarations": [],
+															"referencedDeclaration": 34,
+															"src": "548:4:0",
+															"typeDescriptions": {
+																"typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Info_$3_storage_$",
+																"typeString": "mapping(bytes32 => struct Position.Info storage ref)"
+															}
+														},
+														"id": 56,
+														"indexExpression": {
+															"arguments": [
+																{
+																	"arguments": [
+																		{
+																			"id": 51,
+																			"name": "owner",
+																			"nodeType": "Identifier",
+																			"overloadedDeclarations": [],
+																			"referencedDeclaration": 36,
+																			"src": "594:5:0",
+																			"typeDescriptions": {
+																				"typeIdentifier": "t_address",
+																				"typeString": "address"
+																			}
+																		},
+																		{
+																			"id": 52,
+																			"name": "lowerTick",
+																			"nodeType": "Identifier",
+																			"overloadedDeclarations": [],
+																			"referencedDeclaration": 38,
+																			"src": "601:9:0",
+																			"typeDescriptions": {
+																				"typeIdentifier": "t_int24",
+																				"typeString": "int24"
+																			}
+																		},
+																		{
+																			"id": 53,
+																			"name": "upperTick",
+																			"nodeType": "Identifier",
+																			"overloadedDeclarations": [],
+																			"referencedDeclaration": 40,
+																			"src": "612:9:0",
+																			"typeDescriptions": {
+																				"typeIdentifier": "t_int24",
+																				"typeString": "int24"
+																			}
+																		}
+																	],
+																	"expression": {
+																		"argumentTypes": [
+																			{
+																				"typeIdentifier": "t_address",
+																				"typeString": "address"
+																			},
+																			{
+																				"typeIdentifier": "t_int24",
+																				"typeString": "int24"
+																			},
+																			{
+																				"typeIdentifier": "t_int24",
+																				"typeString": "int24"
+																			}
+																		],
+																		"expression": {
+																			"id": 49,
+																			"name": "abi",
+																			"nodeType": "Identifier",
+																			"overloadedDeclarations": [],
+																			"referencedDeclaration": 4294967295,
+																			"src": "577:3:0",
+																			"typeDescriptions": {
+																				"typeIdentifier": "t_magic_abi",
+																				"typeString": "abi"
+																			}
+																		},
+																		"id": 50,
+																		"isConstant": false,
+																		"isLValue": false,
+																		"isPure": true,
+																		"lValueRequested": false,
+																		"memberLocation": "581:12:0",
+																		"memberName": "encodePacked",
+																		"nodeType": "MemberAccess",
+																		"src": "577:16:0",
+																		"typeDescriptions": {
+																			"typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+																			"typeString": "function () pure returns (bytes memory)"
+																		}
+																	},
+																	"id": 54,
+																	"isConstant": false,
+																	"isLValue": false,
+																	"isPure": false,
+																	"kind": "functionCall",
+																	"lValueRequested": false,
+																	"nameLocations": [],
+																	"names": [],
+																	"nodeType": "FunctionCall",
+																	"src": "577:45:0",
+																	"tryCall": false,
+																	"typeDescriptions": {
+																		"typeIdentifier": "t_bytes_memory_ptr",
+																		"typeString": "bytes memory"
+																	}
+																}
+															],
+															"expression": {
+																"argumentTypes": [
+																	{
+																		"typeIdentifier": "t_bytes_memory_ptr",
+																		"typeString": "bytes memory"
+																	}
+																],
+																"id": 48,
+																"name": "keccak256",
+																"nodeType": "Identifier",
+																"overloadedDeclarations": [],
+																"referencedDeclaration": 4294967288,
+																"src": "567:9:0",
+																"typeDescriptions": {
+																	"typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+																	"typeString": "function (bytes memory) pure returns (bytes32)"
+																}
+															},
+															"id": 55,
+															"isConstant": false,
+															"isLValue": false,
+															"isPure": false,
+															"kind": "functionCall",
+															"lValueRequested": false,
+															"nameLocations": [],
+															"names": [],
+															"nodeType": "FunctionCall",
+															"src": "567:56:0",
+															"tryCall": false,
+															"typeDescriptions": {
+																"typeIdentifier": "t_bytes32",
+																"typeString": "bytes32"
+															}
+														},
+														"isConstant": false,
+														"isLValue": true,
+														"isPure": false,
+														"lValueRequested": false,
+														"nodeType": "IndexAccess",
+														"src": "548:86:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_struct$_Info_$3_storage",
+															"typeString": "struct Position.Info storage ref"
+														}
+													},
+													"src": "537:97:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+														"typeString": "struct Position.Info storage pointer"
+													}
+												},
+												"id": 58,
+												"nodeType": "ExpressionStatement",
+												"src": "537:97:0"
+											}
+										]
+									},
+									"id": 60,
+									"implemented": true,
+									"kind": "function",
+									"modifiers": [],
+									"name": "get",
+									"nameLocation": "336:3:0",
+									"nodeType": "FunctionDefinition",
+									"parameters": {
+										"id": 41,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 34,
+												"mutability": "mutable",
+												"name": "self",
+												"nameLocation": "383:4:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 60,
+												"src": "350:37:0",
+												"stateVariable": false,
+												"storageLocation": "storage",
+												"typeDescriptions": {
+													"typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Info_$3_storage_$",
+													"typeString": "mapping(bytes32 => struct Position.Info)"
+												},
+												"typeName": {
+													"id": 33,
+													"keyName": "",
+													"keyNameLocation": "-1:-1:-1",
+													"keyType": {
+														"id": 30,
+														"name": "bytes32",
+														"nodeType": "ElementaryTypeName",
+														"src": "358:7:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_bytes32",
+															"typeString": "bytes32"
+														}
+													},
+													"nodeType": "Mapping",
+													"src": "350:24:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_mapping$_t_bytes32_$_t_struct$_Info_$3_storage_$",
+														"typeString": "mapping(bytes32 => struct Position.Info)"
+													},
+													"valueName": "",
+													"valueNameLocation": "-1:-1:-1",
+													"valueType": {
+														"id": 32,
+														"nodeType": "UserDefinedTypeName",
+														"pathNode": {
+															"id": 31,
+															"name": "Info",
+															"nameLocations": [
+																"369:4:0"
+															],
+															"nodeType": "IdentifierPath",
+															"referencedDeclaration": 3,
+															"src": "369:4:0"
+														},
+														"referencedDeclaration": 3,
+														"src": "369:4:0",
+														"typeDescriptions": {
+															"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+															"typeString": "struct Position.Info"
+														}
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 36,
+												"mutability": "mutable",
+												"name": "owner",
+												"nameLocation": "406:5:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 60,
+												"src": "398:13:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_address",
+													"typeString": "address"
+												},
+												"typeName": {
+													"id": 35,
+													"name": "address",
+													"nodeType": "ElementaryTypeName",
+													"src": "398:7:0",
+													"stateMutability": "nonpayable",
+													"typeDescriptions": {
+														"typeIdentifier": "t_address",
+														"typeString": "address"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 38,
+												"mutability": "mutable",
+												"name": "lowerTick",
+												"nameLocation": "428:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 60,
+												"src": "422:15:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_int24",
+													"typeString": "int24"
+												},
+												"typeName": {
+													"id": 37,
+													"name": "int24",
+													"nodeType": "ElementaryTypeName",
+													"src": "422:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_int24",
+														"typeString": "int24"
+													}
+												},
+												"visibility": "internal"
+											},
+											{
+												"constant": false,
+												"id": 40,
+												"mutability": "mutable",
+												"name": "upperTick",
+												"nameLocation": "454:9:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 60,
+												"src": "448:15:0",
+												"stateVariable": false,
+												"storageLocation": "default",
+												"typeDescriptions": {
+													"typeIdentifier": "t_int24",
+													"typeString": "int24"
+												},
+												"typeName": {
+													"id": 39,
+													"name": "int24",
+													"nodeType": "ElementaryTypeName",
+													"src": "448:5:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_int24",
+														"typeString": "int24"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "339:131:0"
+									},
+									"returnParameters": {
+										"id": 45,
+										"nodeType": "ParameterList",
+										"parameters": [
+											{
+												"constant": false,
+												"id": 44,
+												"mutability": "mutable",
+												"name": "position",
+												"nameLocation": "516:8:0",
+												"nodeType": "VariableDeclaration",
+												"scope": 60,
+												"src": "494:30:0",
+												"stateVariable": false,
+												"storageLocation": "storage",
+												"typeDescriptions": {
+													"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+													"typeString": "struct Position.Info"
+												},
+												"typeName": {
+													"id": 43,
+													"nodeType": "UserDefinedTypeName",
+													"pathNode": {
+														"id": 42,
+														"name": "Position.Info",
+														"nameLocations": [
+															"494:8:0",
+															"503:4:0"
+														],
+														"nodeType": "IdentifierPath",
+														"referencedDeclaration": 3,
+														"src": "494:13:0"
+													},
+													"referencedDeclaration": 3,
+													"src": "494:13:0",
+													"typeDescriptions": {
+														"typeIdentifier": "t_struct$_Info_$3_storage_ptr",
+														"typeString": "struct Position.Info"
+													}
+												},
+												"visibility": "internal"
+											}
+										],
+										"src": "493:32:0"
+									},
+									"scope": 61,
+									"src": "327:315:0",
+									"stateMutability": "view",
+									"virtual": false,
+									"visibility": "internal"
+								}
+							],
+							"scope": 62,
+							"src": "0:645:0",
+							"usedErrors": [],
+							"usedEvents": []
+						}
+					],
+					"src": "0:645:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
